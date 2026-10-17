@@ -1,0 +1,21 @@
+name: Weekly Scheduled Job (Saturday 12:00 ET)
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    # Every Saturday at 12:00 PM Eastern Time (ET)
+    # GitHub cron is UTC, so this is 16:00 UTC during daylight savings.
+    - cron: '0 16 * * 6'
+
+jobs:
+  run-weekly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Print run info
+        run: |
+          echo "Running scheduled job for dalecannegie-commits/Bountyhub1"
+          echo "Local target: Saturday 12:00 PM Eastern Time"
+          echo "UTC cron: 0 16 * * 6 (Saturday 16:00 UTC)"
+          date -u
